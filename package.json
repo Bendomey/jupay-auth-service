@@ -1,0 +1,55 @@
+{
+  "name": "jupay-auth-service",
+  "version": "1.0.0",
+  "description": "Jupay Auth Service",
+  "main": "index.js",
+  "scripts": {
+    "start": "DEBUG=\"jupay-auth-service:*\" node -r esm index.js",
+    "dev": "DEBUG=\"jupay-auth-service:*\" nodemon -r esm index.js",
+    "lint": "npx standard --fix",
+    "test": "NODE_ENV=development ava",
+    "test:watch": "NODE_ENV=development ava --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bendomey/jupay-auth-service.git"
+  },
+  "keywords": [
+    "nodejs",
+    "functional",
+    "dependency injection"
+  ],
+  "devDependencies": {
+    "ava": "^4.0.1",
+    "nodemon": "^2.0.15"
+  },
+  "ava": {
+    "require": [
+      "esm"
+    ],
+    "timeout": "2m"
+  },
+  "author": "Domey Benjamin <domeybenjamin1@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bendomey/jupay-auth-service/issues"
+  },
+  "homepage": "https://github.com/Bendomey/jupay-auth-service#readme",
+  "dependencies": {
+    "@meltwater/phi": "^5.0.0",
+    "@sentry/node": "^6.17.9",
+    "@sentry/tracing": "^6.17.9",
+    "ajv": "^8.10.0",
+    "awilix": "^6.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "debug": "^4.3.3",
+    "dotenv": "^16.0.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.2.3",
+    "nanoid": "^3.3.1"
+  }
+}
