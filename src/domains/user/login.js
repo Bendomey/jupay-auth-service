@@ -9,7 +9,14 @@ export const config = {
 };
 
 export const login =
-  ({ createLogger, createValidate, newCollection }) =>
+  ({
+    createLogger,
+    createValidate,
+    comparePassword,
+    findOneCollection,
+    signPayload,
+    errors,
+  }) =>
   async (input) => {
     const log = createLogger("user:login");
     log("Login a user");
@@ -23,13 +30,23 @@ export const login =
       password,
     });
 
-    // Check DB
-    const res = await newCollection({
+    //check if it does not exists
+    const user = await findOneCollection({
       collection: "User",
       query: {
-        ...validatedInput,
+        email,
       },
-    }).save();
+    });
+    if (!user) throw new errors.BadRequest("InvalidEmailOrPassword");
 
-    return res;
+    // Compare passwords
+    const isSame = await comparePassword({
+      password: validatedInput.password,
+      hashedPassword: user.password,
+    });
+    if (!isSame) throw new errors.BadRequest("InvalidEmailOrPassword");
+
+    const token = await signPayload({ id: user._id });
+
+    return { user: { ...user._doc, password: undefined }, token };
   };

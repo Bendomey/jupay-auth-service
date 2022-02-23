@@ -34,13 +34,18 @@ export const createHandleRequestResponse =
     });
   };
 
-export default ({}) => {
+export default ({ userService }) => {
   const endpointInformation = [
-    // {
-    //   handler: propertyService.create,
-    //   path: "/api/v1/property",
-    //   method: "post",
-    // },
+    {
+      handler: userService.create,
+      path: "/api/v1/user",
+      method: "post",
+    },
+    {
+      handler: userService.login,
+      path: "/api/v1/user/login",
+      method: "post",
+    },
   ];
 
   endpointInformation.map(({ handler, ...ctx }) =>

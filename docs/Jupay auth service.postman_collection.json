@@ -1,0 +1,78 @@
+{
+	"id": "354a97f1-8780-e362-8f8e-be5c999ca751",
+	"name": "Jupay auth service",
+	"description": "",
+	"order": [
+		"83da330d-5ebf-daa7-9942-7e0aaaabf395",
+		"6bb46c11-5261-abf5-26e7-a34bd120d606"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1645603703508,
+	"owner": "6419640",
+	"public": false,
+	"requests": [
+		{
+			"id": "6bb46c11-5261-abf5-26e7-a34bd120d606",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:5000/api/v1/user/login",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "354a97f1-8780-e362-8f8e-be5c999ca751",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Login",
+			"description": "login",
+			"descriptionFormat": "html",
+			"time": 1645603722638,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"email\":\"domeybenjamin1@gmail.com\",\n\t\"password\":\"pineapple\"\n}"
+		},
+		{
+			"id": "83da330d-5ebf-daa7-9942-7e0aaaabf395",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:5000/api/v1/user",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "354a97f1-8780-e362-8f8e-be5c999ca751",
+			"data": [],
+			"dataMode": "raw",
+			"name": "Create User",
+			"description": "create user",
+			"descriptionFormat": "html",
+			"time": 1645603711429,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"lastName\":\"Domey\",\n\t\"otherNames\":\"Benjamin\",\n\t\"email\":\"domeybenjamin1@gmail.com\",\n\t\"phone\":\"0545526664\",\n\t\"password\":\"pineapple\"\n}"
+		}
+	]
+}

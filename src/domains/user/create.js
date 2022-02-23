@@ -12,7 +12,15 @@ export const config = {
 };
 
 export const create =
-  ({ createLogger, createValidate, newCollection }) =>
+  ({
+    createLogger,
+    createValidate,
+    newCollection,
+    hashPassword,
+    findOneCollection,
+    errors,
+    signPayload,
+  }) =>
   async (input) => {
     const log = createLogger("user:create");
     log("Creating a new user");
@@ -29,13 +37,25 @@ export const create =
       password,
     });
 
+    // check if it exists
+    const user = await findOneCollection({
+      collection: "User",
+      query: {
+        email,
+      },
+    });
+    if (user) throw new errors.BadRequest("UserAlreadyExist");
+
     // Save to DB
     const res = await newCollection({
       collection: "User",
       query: {
         ...validatedInput,
+        password: await hashPassword(password),
       },
     }).save();
 
-    return res;
+    const token = await signPayload({ id: res._id });
+
+    return { user: { ...res._doc, password: undefined }, token };
   };

@@ -21,6 +21,15 @@ export default {
       useNewUrlParser: defaultTo(true, process.env.MONGODB_USE_NEW_URL_PARSER),
     },
   },
+  authentication: {
+    jwt: {
+      secretKey: defaultTo(
+        "90jw98hnw9uehnfiuhgwu9hg9u",
+        process.env.JWT_SECRET_KEY
+      ),
+      expirationTime: defaultTo("2 days", process.env.JWT_EXPIRATION_TIME),
+    },
+  },
   sentry: {
     dsn: process.env.SENTRY_DSN,
     environment: defaultTo("auth-service", process.env.SENTRY_ENVIRONMENT),

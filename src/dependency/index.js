@@ -13,6 +13,13 @@ import {
   createGenerateVerificationCode,
 } from "../utils/string-manager";
 
+import {
+  createComparePassword,
+  createHashPassword,
+  createVerifyPayload,
+  createSignPayload,
+} from "../utils/authentication";
+
 import { createErrors } from "../utils/errors";
 
 // Storage
@@ -51,6 +58,14 @@ container.register(
   "createGenerateVerificationCode",
   asFunction(createGenerateVerificationCode).scoped()
 );
+
+container.register(
+  "comparePassword",
+  asFunction(createComparePassword).scoped()
+);
+container.register("hashPassword", asFunction(createHashPassword).scoped());
+container.register("verifyPayload", asFunction(createVerifyPayload).scoped());
+container.register("signPayload", asFunction(createSignPayload).scoped());
 
 container.register("createValidate", asFunction(createValidate).scoped());
 container.register("errors", asFunction(createErrors).scoped());
