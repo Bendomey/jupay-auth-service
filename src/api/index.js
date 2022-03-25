@@ -42,6 +42,11 @@ export default ({ userService }) => {
       method: "post",
     },
     {
+      handler: userService.update,
+      path: "/api/v1/user/:id",
+      method: "put",
+    },
+    {
       handler: userService.login,
       path: "/api/v1/user/login",
       method: "post",
